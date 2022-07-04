@@ -110,6 +110,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# Docker data
+data/
+
 # Spyder project settings
 .spyderproject
 .spyproject
