@@ -9,4 +9,7 @@ urlpatterns = [
 
     path('posts/', views.PostListApiView.as_view()),
     path('posts/<int:pk>/', views.PostDetailApiView.as_view()),
+
+    path('comments/', views.CommentListApiView.as_view()),
+    path('comments/<int:pk>/', views.CommentDetailApiView.as_view()),
 ]
