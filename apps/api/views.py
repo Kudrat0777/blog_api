@@ -64,5 +64,5 @@ class CategoryListApiView(generics.ListCreateAPIView):
 class CategoryDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     """Category Deatail"""
     queryset = Category.objects.all()
-    serializer_class = serializers.PostSerializer
+    serializer_class = serializers.CategorySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
