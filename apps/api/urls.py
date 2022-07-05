@@ -12,4 +12,7 @@ urlpatterns = [
 
     path('comments/', views.CommentListApiView.as_view()),
     path('comments/<int:pk>/', views.CommentDetailApiView.as_view()),
+
+    path('categories/', views.CategoryListApiView.as_view()),
+    path('categories/<int:pk>/', views.CategoryDetailApiView.as_view()),
 ]

@@ -38,4 +38,21 @@ class Comment(models.Model):
         db_table = 'comments'
 
     def __str__(self) -> str:
-        return self.post
+        return str(self.post)
+
+
+class Category(models.Model):
+    name = models.CharField(
+        max_length=100, blank=True, default='')
+    owner = models.ForeignKey(
+        'auth.User', related_name='categories', on_delete=models.CASCADE)
+    posts = models.ManyToManyField(
+        'Post', related_name='categories', blank=True)
+    
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+        db_table = 'categoryes'
+
+    def __str__(self) -> str:
+        return self.name
