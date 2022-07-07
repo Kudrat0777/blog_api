@@ -2,12 +2,10 @@ from django.db import models
 
 
 class Post(models.Model):
-    created = models.DateTimeField(
-        auto_now_add=True)
-    title = models.CharField(
-        max_length=100, blank=True, default='')
-    body = models.TextField(
-        blank=True, default='')
+    """Посты в разделе 'Мини Блог'"""
+    created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100, blank=True, default='')
+    body = models.TextField(blank=True, default='')
     owner = models.ForeignKey(
         'auth.User', related_name='posts', on_delete=models.CASCADE)
     
@@ -22,12 +20,9 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    created = models.DateTimeField(
-        auto_now_add=True)
-    body = models.TextField(
-        blank=False)
-    owner = models.ForeignKey(
-        'auth.User', related_name='comments', on_delete=models.CASCADE)
+    """Комментарии клиентов"""
+    created = models.DateTimeField(auto_now_add=True)
+    body = models.TextField(blank=False)
     post = models.ForeignKey(
         'Post', related_name='comments', on_delete=models.CASCADE)
     
@@ -42,10 +37,8 @@ class Comment(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(
-        max_length=100, blank=True, default='')
-    owner = models.ForeignKey(
-        'auth.User', related_name='categories', on_delete=models.CASCADE)
+    """Категория мини блога"""
+    name = models.CharField(max_length=100, blank=True, default='')
     posts = models.ManyToManyField(
         'Post', related_name='categories', blank=True)
     
@@ -60,10 +53,8 @@ class Category(models.Model):
 
 class Service(models.Model):
     """Услуга"""
-    title = models.CharField(
-        max_length=100, default='')
-    body = models.TextField(
-        blank=True)
+    title = models.CharField(max_length=100, default='')
+    body = models.TextField(blank=True)
 
     class Meta:
         verbose_name = 'Service'
@@ -76,11 +67,9 @@ class Service(models.Model):
 
 class Portfolio(models.Model):
     """Портфолио"""
-    title = models.CharField(
-        max_length=100, default='')
+    title = models.CharField(max_length=100, default='')
     body = models.TextField()
-    image = models.ImageField(
-        upload_to='image')
+    image = models.ImageField(upload_to='image')
 
     class Meta:
         verbose_name = 'Portfolio'
