@@ -56,3 +56,35 @@ class Category(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class Service(models.Model):
+    """Услуга"""
+    title = models.CharField(
+        max_length=100, default='')
+    body = models.TextField(
+        blank=True)
+
+    class Meta:
+        verbose_name = 'Service'
+        verbose_name_plural = 'Services'
+        db_table = 'services'
+
+    def __str__(self) -> str:
+        return self.title
+
+
+class Portfolio(models.Model):
+    """Портфолио"""
+    title = models.CharField(
+        max_length=100, default='')
+    body = models.TextField()
+    image = models.ImageField(
+        upload_to='image')
+
+    class Meta:
+        verbose_name = 'Portfolio'
+        db_table = 'portfolio'
+
+    def __str__(self) -> str:
+        return self.title
