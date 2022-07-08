@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from apps.api.models import Category, Post, Comment, Service
+from apps.api.models import Category, Post, Comment, Service, Portfolio
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -48,3 +48,9 @@ class ServiceSerializer(serializers.ModelSerializer):
         model = Service
         fields = ['id', 'title', 'body']
 
+
+class PortfolioSerializer(serializers.ModelSerializer):
+    """Portflio"""
+    class Meta:
+        model = Portfolio
+        fields = ['id', 'title', 'body', 'image']

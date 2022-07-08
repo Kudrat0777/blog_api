@@ -1,8 +1,9 @@
+from itertools import permutations
 from rest_framework import generics, permissions
 from apps.api import serializers
 from .permissions import IsOwnerOrReadOnly
 from django.contrib.auth.models import User
-from .models import Post, Comment, Category, Service
+from .models import Post, Comment, Category, Service, Portfolio
 
 
 class UserListApiView(generics.ListAPIView):
@@ -79,4 +80,18 @@ class ServiceDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     """Service Detail"""
     queryset = Service.objects.all()
     serializer_class = serializers.ServiceSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class PortfolioListApiView(generics.ListCreateAPIView):
+    """Portfolio"""
+    queryset = Portfolio.objects.all()
+    serializer_class = serializers.PortfolioSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class PortfolioDetailApiView(generics.RetrieveUpdateDestroyAPIView):
+    """Portfolio"""
+    queryset = Portfolio.objects.all()
+    serializer_class = serializers.PortfolioSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

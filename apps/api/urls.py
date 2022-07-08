@@ -19,4 +19,8 @@ urlpatterns = [
     # Services urls
     path('services/', views.ServiceListApiView.as_view()),
     path('services/<int:pk>/', views.ServiceDetailApiView.as_view()),
+    # Portfolio urls
+    path('portfolio/', views.PortfolioListApiView.as_view()),
+    path('portfolio/<int:pk>/', views.PortfolioDetailApiView.as_view()),
+
 ]
