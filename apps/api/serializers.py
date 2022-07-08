@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from apps.api.models import Category, Post, Comment
+from apps.api.models import Category, Post, Comment, Service
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -40,4 +40,11 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name', 'posts']
+
+
+class ServiceSerializer(serializers.ModelSerializer):
+    """Services"""
+    class Meta:
+        model = Service
+        fields = ['id', 'title', 'body']
 
