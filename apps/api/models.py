@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 
@@ -6,6 +7,7 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100, blank=True, default='')
     body = models.TextField(blank=True, default='')
+    image = models.ImageField(upload_to='images/posts/', default='image')
     owner = models.ForeignKey(
         'auth.User', related_name='posts', on_delete=models.CASCADE)
     
@@ -69,7 +71,7 @@ class Portfolio(models.Model):
     """Портфолио"""
     title = models.CharField(max_length=100, default='')
     body = models.TextField()
-    image = models.ImageField(upload_to='image')
+    image = models.ImageField(upload_to='images/portfolio/', default='image')
 
     class Meta:
         verbose_name = 'Portfolio'
